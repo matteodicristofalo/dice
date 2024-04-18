@@ -1,0 +1,36 @@
+.events {
+  margin: 3rem auto;
+  max-width: 1240px;
+}
+
+.events__grid {
+  display: grid;
+  gap: 2rem;
+  grid-template-columns: repeat(4, 1fr);
+  margin-top: 3rem;
+  list-style: none;
+}
+
+.event__poster {
+  border-radius: 4px;
+  display: block;
+  object-fit: cover;
+  width: 100%;
+}
+
+.event__name {
+  display: block;
+  margin: 0.75rem 0 0.5rem 0;
+}
+
+.event__date,
+.event__location,
+.event__price {
+  display: block;
+  font-size: 0.75rem;
+  margin-top: 0.25rem;
+}
+
+.event__date {
+  color: var(--accent-color);
+}
