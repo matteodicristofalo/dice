@@ -5,7 +5,9 @@ import { events } from "../data";
 export default function Home() {
   return (
     <div className={styles["container"]}>
-      <h1 className="is-title-xl">Popular events in Milan</h1>
+      <h1 className="is-title-xl">
+        Popular events in <span className="has-foreground-accent">Milan</span>
+      </h1>
 
       <div className={styles["events"]}>
         {events.map((event, idx) => (
