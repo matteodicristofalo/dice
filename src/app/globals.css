@@ -33,3 +33,8 @@ body {
 .divider {
   border-color: rgba(255, 255, 255, 0.2);
 }
+
+.flex {
+  display: flex;
+  align-items: center;
+}

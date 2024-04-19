@@ -78,6 +78,10 @@
   padding-right: 0.5rem;
 }
 
+.has-gap-8 {
+  gap: 0.5rem;
+}
+
 .has-m-12 {
   margin: 0.75rem;
 }
@@ -156,6 +160,10 @@
 
 .has-pr-16 {
   padding-right: 1rem;
+}
+
+.has-gap-16 {
+  gap: 1rem;
 }
 
 .has-m-24 {
