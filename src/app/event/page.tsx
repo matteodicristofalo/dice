@@ -28,9 +28,38 @@ export default function Event() {
 
           <div>
             <h2 className="is-title-l has-mt-64 has-mb-16">About the event</h2>
-            <p className="is-body-m has-foreground-secondary">
+            <p className="is-body-l has-foreground-secondary">
               {event.description}
             </p>
+          </div>
+
+          <hr className="divider has-mt-32" />
+
+          <div>
+            <h2 className="is-title-l has-mt-64 has-mb-16">Line up</h2>
+            <div>
+              <div className={styles["artist"]}>
+                <div className={styles["artist__data"]}>
+                  <div className={styles["artist__picture"]}></div>
+                  <span>Mario Rossi</span>
+                </div>
+                <Button variant="foreground">Follow</Button>
+              </div>
+              <div className={styles["artist"]}>
+                <div className={styles["artist__data"]}>
+                  <div className={styles["artist__picture"]}></div>
+                  <span>Mario Rossi</span>
+                </div>
+                <Button variant="foreground">Follow</Button>
+              </div>
+              <div className={styles["artist"]}>
+                <div className={styles["artist__data"]}>
+                  <div className={styles["artist__picture"]}></div>
+                  <span>Mario Rossi</span>
+                </div>
+                <Button variant="foreground">Follow</Button>
+              </div>
+            </div>
           </div>
         </div>
       </div>

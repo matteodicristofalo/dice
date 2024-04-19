@@ -13,7 +13,7 @@ body {
   --background-color: black;
   --background-secondary-color: #1a1a1a;
   --foreground-color: white;
-  --foreground-secondary-color: #ffffffa8;
+  --foreground-secondary-color: rgba(255, 255, 255, 0.6);
   --accent-color: #f2ef1d;
   --max-width: 1080px;
   --radius-size: 4px;
@@ -28,4 +28,8 @@ body {
 
 .has-foreground-accent {
   color: var(--accent-color);
+}
+
+.divider {
+  border-color: rgba(255, 255, 255, 0.2);
 }
