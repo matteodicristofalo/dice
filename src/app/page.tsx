@@ -8,8 +8,8 @@ export default function Home() {
       <h1 className="is-title-xl">Popular events in Milan</h1>
 
       <div className={styles["events"]}>
-        {events.map((event) => (
-          <Link href="event">
+        {events.map((event, idx) => (
+          <Link href="event" key={idx}>
             <div className={styles["event"]}>
               <img className={styles["event__poster"]} src={event.poster} />
               <p className={styles["event__name"]}>{event.name}</p>
