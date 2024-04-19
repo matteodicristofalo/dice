@@ -1,8 +1,10 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap');
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: sans-serif;
+  font-family: 'DM Sans', sans-serif;
 }
 
 a {
@@ -14,6 +16,7 @@ body {
   --background-color: black;
   --foreground-color: white;
   --accent-color: #f2ef1d;
+  --max-width: 1080px;
 
   background: var(--background-color);
   color: var(--foreground-color);

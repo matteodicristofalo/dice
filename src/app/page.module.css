@@ -1,6 +1,6 @@
 .events {
   margin: 3rem auto;
-  max-width: 1240px;
+  max-width: var(--max-width);
 }
 
 .events__grid {
