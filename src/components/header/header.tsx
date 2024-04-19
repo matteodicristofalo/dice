@@ -1,6 +1,6 @@
 import Link from "next/link";
 import styles from "./header.module.css";
-import { Logo } from "./logo";
+import { Logo } from "../logo/logo";
 
 export function Header() {
   return (
