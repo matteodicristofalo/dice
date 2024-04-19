@@ -1,23 +1,31 @@
 @import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap');
 
 * {
+  box-sizing: border-box;
+  color: inherit;
+  font-family: 'DM Sans', sans-serif;
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
-  font-family: 'DM Sans', sans-serif;
-}
-
-a {
-  color: inherit;
   text-decoration: none;
 }
 
 body {
   --background-color: black;
+  --background-secondary-color: #1a1a1a;
   --foreground-color: white;
+  --foreground-secondary-color: #ffffffa8;
   --accent-color: #f2ef1d;
   --max-width: 1080px;
+  --radius-size: 4px;
 
   background: var(--background-color);
   color: var(--foreground-color);
+}
+
+.has-foreground-secondary {
+  color: var(--foreground-secondary-color);
+}
+
+.has-foreground-accent {
+  color: var(--accent-color);
 }

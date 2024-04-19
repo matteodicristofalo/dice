@@ -1,6 +1,8 @@
-import { Header } from "@/components/header/Header";
-import { SmoothScroll } from "@/components/SmoothScroll";
+import { Header } from "@components/header/header";
+import { SmoothScroll } from "@components/smooth-scroll";
 import "./globals.css";
+import "./typography.css";
+import "./spacings.css";
 
 export default function RootLayout({
   children,
