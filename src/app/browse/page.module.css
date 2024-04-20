@@ -1,0 +1,26 @@
+.container {
+  margin: 3rem auto;
+  max-width: var(--max-width);
+}
+
+.events {
+  display: grid;
+  gap: 2rem;
+  grid-template-columns: repeat(4, 1fr);
+  margin-top: 3rem;
+}
+
+.event__poster {
+  border-radius: var(--radius-size);
+  display: block;
+  object-fit: cover;
+  width: 100%;
+}
+
+.event__name {
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  display: -webkit-box;
+  margin: 0.75rem 0 0.25rem 0;
+  overflow: hidden;
+}
