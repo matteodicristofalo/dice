@@ -10,14 +10,14 @@
   margin-top: 3rem;
 }
 
-.event__poster {
+.poster {
   border-radius: var(--radius-size);
   display: block;
   object-fit: cover;
   width: 100%;
 }
 
-.event__name {
+.name {
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 2;
   display: -webkit-box;

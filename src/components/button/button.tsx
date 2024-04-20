@@ -1,9 +1,9 @@
 import styles from "./button.module.css";
 
-type ButtonProps = {
+interface ButtonProps {
   variant?: "accent" | "foreground";
   children: React.ReactNode;
-};
+}
 
 export function Button({ variant = "accent", children }: ButtonProps) {
   const className = `${styles["button"]} ${
