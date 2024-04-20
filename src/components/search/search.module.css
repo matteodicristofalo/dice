@@ -1,0 +1,49 @@
+.container {
+  margin: 3rem auto;
+  max-width: var(--max-width);
+}
+
+.search {
+  position: relative;
+  width: 75%;
+}
+
+.input {
+  background: var(--background-secondary-color);
+  border-radius: var(--radius-size);
+  border: 0;
+  color: var(--foreground-color);
+  display: block;
+  font-size: 1.5rem;
+  font-weight: 500;
+  margin: 3rem 0;
+  padding: 1rem 1.5rem;
+  width: 100%;
+}
+
+.icon {
+  animation-duration: 1s;
+  animation-fill-mode: both;
+  animation-iteration-count: infinite;
+  animation-name: anim;
+  animation-timing-function: ease-out;
+  cursor: pointer;
+  position: absolute;
+  top: 55%;
+  transform: translateY(-50%);
+  width: 2rem;
+}
+
+@keyframes anim {
+  0% {
+    right: 2rem;
+  }
+
+  50% {
+    right: 1.5rem;
+  }
+
+  100% {
+    right: 2rem;
+  }
+}
