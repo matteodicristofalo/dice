@@ -4,18 +4,7 @@ import Link from "next/link";
 import styles from "./search.module.css";
 import { useState } from "react";
 import { SearchIcon } from "@/components/icons/search";
-
-const availableCities = [
-  "London",
-  "Milan",
-  "Miami",
-  "New York",
-  "Paris",
-  "Tokyo",
-  "Toronto",
-  "Vancouver",
-  "Venice",
-];
+import { motion, AnimatePresence } from "framer-motion";
 
 interface SearchProps {
   suggestions: string[];
@@ -23,11 +12,11 @@ interface SearchProps {
 
 export function Search({ suggestions }: SearchProps) {
   const [filteredSuggestions, setFilteredSuggestions] =
-    useState<string[]>(availableCities);
+    useState<string[]>(suggestions);
   const [isInputFocused, setIsInputFocused] = useState(false);
 
   function handleChange(event: React.ChangeEvent<HTMLInputElement>) {
-    const filtered = availableCities.filter((city) =>
+    const filtered = suggestions.filter((city) =>
       city.toLowerCase().includes(event.target.value.toLowerCase())
     );
     setFilteredSuggestions(filtered);
@@ -37,7 +26,6 @@ export function Search({ suggestions }: SearchProps) {
     if (e.relatedTarget?.getAttribute("data-suggestion") === "true") {
       return;
     }
-
     setIsInputFocused(false);
   }
 
@@ -58,20 +46,27 @@ export function Search({ suggestions }: SearchProps) {
         </div>
       </div>
 
-      {isInputFocused && filteredSuggestions.length > 0 && (
-        <div className={styles["suggestions"]}>
-          {suggestions.map((city) => (
-            <Link
-              key={city}
-              href={`/browse?q=${city}`}
-              className={`${styles["suggestion"]}`}
-              data-suggestion="true"
-            >
-              {city}
-            </Link>
-          ))}
-        </div>
-      )}
+      <AnimatePresence>
+        {isInputFocused && filteredSuggestions.length > 0 && (
+          <motion.div
+            className={styles["suggestions"]}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+          >
+            {suggestions.map((city) => (
+              <Link
+                key={city}
+                href={`/browse?q=${city}`}
+                className={`${styles["suggestion"]}`}
+                data-suggestion="true"
+              >
+                {city}
+              </Link>
+            ))}
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   );
 }
