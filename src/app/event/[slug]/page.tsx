@@ -46,7 +46,7 @@ export default async function Event({ params }: EventProps) {
               <div>
                 <p>Price:</p>
                 <p className="is-body-l-medium has-mt-8">
-                  {`$ ${event.price}` ?? "Free"}
+                  {event.price ? `$ ${event.price}` : "Free"}
                 </p>
               </div>
 
@@ -54,27 +54,33 @@ export default async function Event({ params }: EventProps) {
             </div>
           </section>
 
-          <section>
-            <h2 className="is-title-l has-mt-64 has-mb-16">About the event</h2>
+          {event.description && (
+            <section>
+              <h2 className="is-title-l has-mt-64 has-mb-16">
+                About the event
+              </h2>
 
-            <p className="is-body-l has-foreground-secondary">
-              {event.description}
-            </p>
-          </section>
+              <p className="is-body-l has-foreground-secondary">
+                {event.description}
+              </p>
+            </section>
+          )}
 
-          <section>
-            <h2 className="is-title-l has-mt-64 has-mb-16">Line up</h2>
+          {event.lineupCollection.items.length > 0 && (
+            <section>
+              <h2 className="is-title-l has-mt-64 has-mb-16">Line up</h2>
 
-            {event.lineupCollection.items.map((artist: any, i: number) => (
-              <div className={styles["artist"]} key={i}>
-                <div className="flex has-gap-16">
-                  <div className={styles["photo"]}></div>
-                  <span>{artist.name}</span>
+              {event.lineupCollection.items.map((artist: any, i: number) => (
+                <div className={styles["artist"]} key={i}>
+                  <div className="flex has-gap-16">
+                    <div className={styles["photo"]}></div>
+                    <span>{artist.name}</span>
+                  </div>
+                  <Button variant="foreground">Follow</Button>
                 </div>
-                <Button variant="foreground">Follow</Button>
-              </div>
-            ))}
-          </section>
+              ))}
+            </section>
+          )}
         </div>
       </div>
     </div>
