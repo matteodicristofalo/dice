@@ -54,7 +54,7 @@ export function Search({ suggestions }: SearchProps) {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
           >
-            {suggestions.map((city) => (
+            {filteredSuggestions.map((city) => (
               <Link
                 key={city}
                 href={`/browse?q=${city}`}
