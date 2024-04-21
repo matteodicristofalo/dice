@@ -3,6 +3,7 @@ import { Button } from "@components/button/button";
 import { LocationIcon } from "@icons/location";
 import { CalendarIcon } from "@icons/calendar";
 import { getEvent } from "@actions";
+import { format } from "date-fns";
 
 interface EventProps {
   params: {
@@ -36,7 +37,9 @@ export default async function Event({ params }: EventProps) {
 
             <p className="flex is-body-l has-gap-8 has-mt-8">
               <CalendarIcon />
-              <span className="has-foreground-accent">{event.date}</span>
+              <span className="has-foreground-accent">
+                {format(event.date, "EEE dd LLL, HH:mm")}
+              </span>
             </p>
 
             <div className={styles["price"]}>
