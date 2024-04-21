@@ -1,10 +1,9 @@
 /* 
   TODO:
-    - Start using the city parameter in getEventsFor
-    - Create types
+    - Use zod to validate data
 */
 
-export async function getAvailableCities() {
+export async function getAvailableCities(): Promise<string[]> {
   const query = `
     {
       contentTypeLocationCollection {
@@ -17,32 +16,26 @@ export async function getAvailableCities() {
 
   const response = await fetchContentful(query);
   const result = await response.json();
-  const locations = result.data.contentTypeLocationCollection.items;
-  const cities: string[] = locations.map((location: any) => location.city);
+  const locations: Location[] = result.data.contentTypeLocationCollection.items;
+  const cities = locations.map((location) => location.city);
   return Array.from(new Set(cities));
 }
 
-export async function getEventsFor(city: string) {
+export async function getEventsFor(city: string): Promise<Event[]> {
   const query = `
     {
       eventCollection(where: {location: {city: "${city}"}}) { 
         items { 
-          name 
           slug 
+          name 
           poster { 
             url 
           } 
-          price 
-          date 
           location { 
             name 
           } 
-          description 
-          lineupCollection { 
-            items { 
-              name 
-            } 
-          }
+          date 
+          price 
         } 
       } 
     }  
@@ -53,21 +46,21 @@ export async function getEventsFor(city: string) {
   return result.data.eventCollection.items;
 }
 
-export async function getEvent(slug: string) {
+export async function getEvent(slug: string): Promise<Event> {
   const query = `
   {
     eventCollection(where: {slug: "${slug}"}, limit: 1) {
       items {
-        name
         slug
+        name
         poster {
           url
         }
-        price
-        date
         location {
           name
         }
+        date
+        price
         description
         lineupCollection {
           items {
