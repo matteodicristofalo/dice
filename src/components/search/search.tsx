@@ -17,15 +17,20 @@ const availableCities = [
   "Venice",
 ];
 
-export function Search() {
-  const [suggestions, setSuggestions] = useState<string[]>(availableCities);
+interface SearchProps {
+  suggestions: string[];
+}
+
+export function Search({ suggestions }: SearchProps) {
+  const [filteredSuggestions, setFilteredSuggestions] =
+    useState<string[]>(availableCities);
   const [isInputFocused, setIsInputFocused] = useState(false);
 
   function handleChange(event: React.ChangeEvent<HTMLInputElement>) {
     const filtered = availableCities.filter((city) =>
       city.toLowerCase().includes(event.target.value.toLowerCase())
     );
-    setSuggestions(filtered);
+    setFilteredSuggestions(filtered);
   }
 
   function handleBlur(e: React.FocusEvent<HTMLInputElement>) {
@@ -53,7 +58,7 @@ export function Search() {
         </div>
       </div>
 
-      {isInputFocused && suggestions.length > 0 && (
+      {isInputFocused && filteredSuggestions.length > 0 && (
         <div className={styles["suggestions"]}>
           {suggestions.map((city) => (
             <Link

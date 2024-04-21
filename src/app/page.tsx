@@ -1,7 +1,10 @@
+import { getAvailableCities } from "./actions";
 import styles from "./page.module.css";
 import { Search } from "@components/search/search";
 
-export default function Home() {
+export default async function Home() {
+  const cities = await getAvailableCities();
+
   return (
     <div className={styles["container"]}>
       <h1 className="is-title-xxxl">Find more of the events you love</h1>
@@ -11,7 +14,7 @@ export default function Home() {
         make going out easy.
       </p>
 
-      <Search />
+      <Search suggestions={cities} />
     </div>
   );
 }

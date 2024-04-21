@@ -4,10 +4,28 @@
     - Create types
 */
 
+export async function getAvailableCities() {
+  const query = `
+    {
+      contentTypeLocationCollection {
+        items {
+          city
+        }
+      }
+    }
+  `;
+
+  const response = await fetchContentful(query);
+  const result = await response.json();
+  const locations = result.data.contentTypeLocationCollection.items;
+  const cities: string[] = locations.map((location: any) => location.city);
+  return Array.from(new Set(cities));
+}
+
 export async function getEventsFor(city: string) {
   const query = `
     {
-      eventCollection(where: {location: {city: "Milan"}}) { 
+      eventCollection(where: {location: {city: "${city}"}}) { 
         items { 
           name 
           slug 
