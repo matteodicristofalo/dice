@@ -24,7 +24,7 @@ export async function getAvailableCities(): Promise<string[]> {
 export async function getEventsFor(city: string): Promise<Event[]> {
   const query = `
     {
-      eventCollection(where: {location: {city: "${city}"}}) { 
+      eventCollection(where: {location: {city: "${city}"}} order: date_ASC) { 
         items { 
           slug 
           name 
