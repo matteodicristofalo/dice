@@ -1,39 +1,72 @@
 "use client";
 
+import Link from "next/link";
 import styles from "./search.module.css";
 import { useState } from "react";
-import { ArrowRightIcon } from "@icons/arrow-right";
-import { useRouter } from "next/navigation";
+import { SearchIcon } from "@/components/icons/search";
+
+const availableCities = [
+  "London",
+  "Milan",
+  "Miami",
+  "New York",
+  "Paris",
+  "Tokyo",
+  "Toronto",
+  "Vancouver",
+  "Venice",
+];
 
 export function Search() {
-  const router = useRouter();
-  const [value, setValue] = useState("");
+  const [suggestions, setSuggestions] = useState<string[]>(availableCities);
+  const [isInputFocused, setIsInputFocused] = useState(false);
 
   function handleChange(event: React.ChangeEvent<HTMLInputElement>) {
-    setValue(event.target.value);
+    const filtered = availableCities.filter((city) =>
+      city.toLowerCase().includes(event.target.value.toLowerCase())
+    );
+    setSuggestions(filtered);
   }
 
-  function handleKeyDown(event: React.KeyboardEvent<HTMLInputElement>) {
-    if (event.key === "Enter") redirect();
-  }
+  function handleBlur(e: React.FocusEvent<HTMLInputElement>) {
+    if (e.relatedTarget?.getAttribute("data-suggestion") === "true") {
+      return;
+    }
 
-  function redirect() {
-    router.push(`/browse?q=${encodeURIComponent(value)}`);
+    setIsInputFocused(false);
   }
 
   return (
     <div className={styles["search"]}>
-      <input
-        className={styles["input"]}
-        type="text"
-        placeholder="Enter a city"
-        onChange={handleChange}
-        onKeyDown={handleKeyDown}
-      />
+      <div className={styles["wrapper"]}>
+        <input
+          className={styles["input"]}
+          type="text"
+          placeholder="Enter a city"
+          onFocus={() => setIsInputFocused(true)}
+          onBlur={handleBlur}
+          onChange={handleChange}
+        />
 
-      <div className={styles["icon"]} onClick={redirect}>
-        <ArrowRightIcon />
+        <div className={styles["icon"]}>
+          <SearchIcon />
+        </div>
       </div>
+
+      {isInputFocused && suggestions.length > 0 && (
+        <div className={styles["suggestions"]}>
+          {suggestions.map((city) => (
+            <Link
+              key={city}
+              href={`/browse?q=${city}`}
+              className={`${styles["suggestion"]}`}
+              data-suggestion="true"
+            >
+              {city}
+            </Link>
+          ))}
+        </div>
+      )}
     </div>
   );
 }
