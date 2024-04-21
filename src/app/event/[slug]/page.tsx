@@ -6,19 +6,24 @@ import { getEvent } from "@actions";
 
 interface EventProps {
   params: {
-    id: string;
+    slug: string;
   };
 }
 
-export default function Event({ params }: EventProps) {
-  const event = getEvent(params.id);
+export default async function Event({ params }: EventProps) {
+  const event = await getEvent(params.slug);
 
   return (
     <div className={styles["container"]}>
-      <div className={styles["background"]}></div>
+      <div
+        className={styles["background"]}
+        style={{
+          backgroundImage: `url("${event.poster.url}")`,
+        }}
+      ></div>
 
       <div className={styles["content"]}>
-        <img className={styles["poster"]} src={event.poster} />
+        <img className={styles["poster"]} src={event.poster.url} />
 
         <div>
           <section>
@@ -26,7 +31,7 @@ export default function Event({ params }: EventProps) {
 
             <p className="flex is-body-l has-gap-8 has-mt-24">
               <LocationIcon />
-              <span>{event.location}</span>
+              <span>{event.location.name}</span>
             </p>
 
             <p className="flex is-body-l has-gap-8 has-mt-8">
@@ -55,11 +60,11 @@ export default function Event({ params }: EventProps) {
           <section>
             <h2 className="is-title-l has-mt-64 has-mb-16">Line up</h2>
 
-            {event.lineup.map((artist, i) => (
+            {event.lineupCollection.items.map((artist: any, i: number) => (
               <div className={styles["artist"]} key={i}>
                 <div className="flex has-gap-16">
                   <div className={styles["photo"]}></div>
-                  <span>{artist}</span>
+                  <span>{artist.name}</span>
                 </div>
                 <Button variant="foreground">Follow</Button>
               </div>

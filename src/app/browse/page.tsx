@@ -8,9 +8,9 @@ interface BrowseProps {
   };
 }
 
-export default function Browse({ searchParams }: BrowseProps) {
+export default async function Browse({ searchParams }: BrowseProps) {
   const city = searchParams["q"];
-  const events = getEventsFor(city);
+  const events = await getEventsFor(city);
 
   return (
     <div className={styles["container"]}>
@@ -19,15 +19,15 @@ export default function Browse({ searchParams }: BrowseProps) {
       </h1>
 
       <div className={styles["events"]}>
-        {events.map((event, i) => (
-          <Link href={`event/${i}`} key={i}>
+        {events.map((event: any) => (
+          <Link href={`event/${event.slug}`} key={event.slug}>
             <div className={styles["event"]}>
-              <img className={styles["poster"]} src={event.poster} />
+              <img className={styles["poster"]} src={event.poster.url} />
               <p className={styles["name"]}>{event.name}</p>
               <p className="is-body-s has-mb-4 has-foreground-accent">
                 {event.date}
               </p>
-              <p className="is-body-s has-mb-4">{event.location}</p>
+              <p className="is-body-s has-mb-4">{event.location.name}</p>
               <p className="is-body-s has-mb-4">{event.price}</p>
             </div>
           </Link>

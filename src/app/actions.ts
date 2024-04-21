@@ -1,19 +1,88 @@
-const event = {
-  name: "Ciao Discoteca Italiana. Notturno Italiano",
-  date: "dom 21 Maggio",
-  location: "Stecca 3.0",
-  price: "$46,04",
-  description:
-    "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.",
-  poster:
-    "https://dice-media.imgix.net/attachments/2024-04-10/9d07fc2a-48f3-4efe-bd8e-1de1866bba99.jpg?rect=0%2C0%2C1080%2C1080&auto=format%2Ccompress&q=40&w=328&fit=max&dpr=2",
-  lineup: ["Marco Carola", "Mochakk", "Adam Port"],
-};
+/* 
+  TODO:
+    - Start using the city parameter in getEventsFor
+    - Create types
+*/
 
-export function getEventsFor(city: string) {
-  return Array(8).fill(event);
+export async function getEventsFor(city: string) {
+  const query = `
+    {
+      eventCollection(where: {location: {city: "Milan"}}) { 
+        items { 
+          name 
+          slug 
+          poster { 
+            url 
+          } 
+          price 
+          date 
+          location { 
+            name 
+          } 
+          description 
+          lineupCollection { 
+            items { 
+              name 
+            } 
+          }
+        } 
+      } 
+    }  
+  `;
+
+  const response = await fetchContentful(query);
+  const result = await response.json();
+  return result.data.eventCollection.items;
 }
 
-export function getEvent(id: string) {
-  return event;
+export async function getEvent(slug: string) {
+  const query = `
+  {
+    eventCollection(where: {slug: "${slug}"}, limit: 1) {
+      items {
+        name
+        slug
+        poster {
+          url
+        }
+        price
+        date
+        location {
+          name
+        }
+        description
+        lineupCollection {
+          items {
+            name
+          }
+        }
+      }
+    }
+  } 
+`;
+
+  const response = await fetchContentful(query);
+  const result = await response.json();
+  const events = result.data.eventCollection.items;
+  return events[0];
+}
+
+async function fetchContentful(graphQlQuery: string) {
+  const space = process.env.CONTENTFUL_SPACE;
+  const environment = process.env.CONTENTFUL_ENVIRONMENT;
+  const accessToken = process.env.CONTENTFUL_ACCESS_TOKEN;
+  const url = `https://graphql.contentful.com/content/v1/spaces/${space}/environments/${environment}`;
+
+  const query = {
+    query: graphQlQuery,
+  };
+
+  return fetch(url, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${accessToken}`,
+    },
+    body: JSON.stringify(query),
+  });
 }
