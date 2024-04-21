@@ -28,7 +28,9 @@ export default async function Browse({ searchParams }: BrowseProps) {
                 {event.date}
               </p>
               <p className="is-body-s has-mb-4">{event.location.name}</p>
-              <p className="is-body-s has-mb-4">{event.price}</p>
+              <p className="is-body-s has-mb-4">
+                {`$ ${event.price}` ?? "Free"}
+              </p>
             </div>
           </Link>
         ))}

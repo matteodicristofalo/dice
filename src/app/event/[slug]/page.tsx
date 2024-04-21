@@ -42,7 +42,9 @@ export default async function Event({ params }: EventProps) {
             <div className={styles["price"]}>
               <div>
                 <p>Price:</p>
-                <p className="is-body-l-medium has-mt-8">{event.price}</p>
+                <p className="is-body-l-medium has-mt-8">
+                  {`$ ${event.price}` ?? "Free"}
+                </p>
               </div>
 
               <Button>Buy now</Button>
