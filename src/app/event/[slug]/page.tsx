@@ -12,7 +12,7 @@ interface EventProps {
 }
 
 export default async function Event({ params }: EventProps) {
-  const { poster, name, date, price, description, lineupCollection } =
+  const { poster, name, location, date, price, description, lineupCollection } =
     await getEvent(params.slug);
 
   return (
