@@ -2,11 +2,17 @@
   align-items: center;
   display: flex;
   justify-content: space-between;
-  padding: 1rem 3rem;
+  padding: 2rem;
 }
 
 .header__link {
   display: inline-block;
   list-style: none;
   margin-left: 1rem;
+}
+
+@media screen and (min-width: 1024px) {
+  .header {
+    padding: 2rem 3rem;
+  }
 }
