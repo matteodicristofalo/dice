@@ -39,6 +39,7 @@ export function Search({ suggestions }: SearchProps) {
           onFocus={() => setIsInputFocused(true)}
           onBlur={handleBlur}
           onChange={handleChange}
+          data-testid="input"
         />
 
         <div className={styles["icon"]}>
@@ -53,6 +54,7 @@ export function Search({ suggestions }: SearchProps) {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
+            data-testid="suggestions"
           >
             {filteredSuggestions.map((city) => (
               <Link
