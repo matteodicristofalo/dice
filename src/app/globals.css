@@ -10,6 +10,10 @@
   text-decoration: none;
 }
 
+html {
+  font-size: 14px;
+}
+
 body {
   --background-color: black;
   --background-secondary-color: #1a1a1a;
@@ -23,6 +27,11 @@ body {
   color: var(--foreground-color);
 }
 
+.flex {
+  display: flex;
+  align-items: center;
+}
+
 .has-foreground-secondary {
   color: var(--foreground-secondary-color);
 }
@@ -31,7 +40,8 @@ body {
   color: var(--accent-color);
 }
 
-.flex {
-  display: flex;
-  align-items: center;
+@media screen and (min-width: 1024px) {
+  html {
+    font-size: 16px;
+  }
 }

@@ -8,7 +8,7 @@
   background-repeat: no-repeat;
   background-size: cover;
   filter: blur(4rem);
-  height: 50dvh;
+  height: 100dvh;
   opacity: 0.4;
   position: absolute;
   width: 100dvw;
@@ -16,11 +16,8 @@
 }
 
 .content {
-  display: grid;
-  gap: 3rem;
-  grid-template-columns: 1fr 2fr;
-  margin: 3rem auto;
   max-width: var(--max-width);
+  padding: 2rem;
   position: relative;
 }
 
@@ -28,9 +25,11 @@
   border-radius: var(--radius-size);
   display: block;
   object-fit: cover;
-  position: sticky;
-  top: 5rem;
   width: 100%;
+}
+
+.name {
+  margin-top: 2rem;
 }
 
 .price {
@@ -61,4 +60,26 @@
   border-radius: 50%;
   height: 3rem;
   width: 3rem;
+}
+
+@media screen and (min-width: 1024px) {
+  .background {
+    height: 50dvh;
+  }
+
+  .content {
+    display: grid;
+    gap: 3rem;
+    grid-template-columns: 1fr 2fr;
+    margin: 3rem auto;
+  }
+
+  .poster {
+    position: sticky;
+    top: 5rem;
+  }
+
+  .name {
+    margin-top: 0;
+  }
 }

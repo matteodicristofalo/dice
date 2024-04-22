@@ -29,7 +29,7 @@ export default async function Event({ params }: EventProps) {
 
         <div>
           <section>
-            <h1 className="is-title-xxl">{name}</h1>
+            <h1 className={`${styles["name"]} is-title-xxl`}>{name}</h1>
 
             <p className="flex is-body-l has-gap-8 has-mt-24">
               <LocationIcon />
