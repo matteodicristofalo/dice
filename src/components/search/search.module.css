@@ -1,6 +1,6 @@
 .search {
-  margin: 3rem 0;
-  width: 75%;
+  position: relative;
+  z-index: 0;
 }
 
 .wrapper {
@@ -32,7 +32,12 @@
   border-radius: var(--radius-size);
   color: var(--background-color);
   margin-top: 1rem;
+  max-height: 200px;
+  overflow: scroll;
   padding: 1rem;
+  position: absolute;
+  width: 100%;
+  z-index: 1;
 }
 
 .suggestion {

@@ -14,7 +14,9 @@ export default async function Home() {
         make going out easy.
       </p>
 
-      <Search suggestions={cities} />
+      <div className={styles["search"]}>
+        <Search suggestions={cities} />
+      </div>
     </div>
   );
 }
