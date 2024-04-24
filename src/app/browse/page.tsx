@@ -2,6 +2,7 @@ import Link from "next/link";
 import styles from "./page.module.css";
 import { getEventsFor } from "@actions";
 import { format } from "date-fns";
+import { Image } from "@components/image/image";
 
 interface BrowseProps {
   searchParams: {
@@ -23,7 +24,9 @@ export default async function Browse({ searchParams }: BrowseProps) {
         {events.map((event: any) => (
           <Link href={`event/${event.slug}`} key={event.slug}>
             <div className={styles["event"]}>
-              <img className={styles["poster"]} src={event.poster.url} />
+              <div className={styles["poster"]}>
+                <Image src={event.poster.url} alt={event.name} />
+              </div>
               <p className={styles["name"]}>{event.name}</p>
               <p className="is-body-s has-mb-4 has-foreground-accent">
                 {format(event.date, "dd LLL")}

@@ -22,13 +22,6 @@
   position: relative;
 }
 
-.poster {
-  border-radius: var(--radius-size);
-  display: block;
-  object-fit: cover;
-  width: 100%;
-}
-
 .name {
   margin-top: 2rem;
 }
@@ -48,12 +41,6 @@
   display: flex;
   justify-content: space-between;
   margin-top: 1.5rem;
-}
-
-.artist__data {
-  align-items: center;
-  display: flex;
-  gap: 1rem;
 }
 
 .photo {

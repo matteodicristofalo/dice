@@ -4,6 +4,7 @@ import { LocationIcon } from "@icons/location";
 import { CalendarIcon } from "@icons/calendar";
 import { getEvent } from "@actions";
 import { format } from "date-fns";
+import { Image } from "@components/image/image";
 
 interface EventProps {
   params: {
@@ -25,7 +26,7 @@ export default async function Event({ params }: EventProps) {
       ></div>
 
       <div className={styles["content"]}>
-        <img className={styles["poster"]} src={poster.url} />
+        <Image src={poster.url} alt={name} />
 
         <div>
           <section>
