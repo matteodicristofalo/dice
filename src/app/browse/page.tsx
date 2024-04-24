@@ -23,10 +23,8 @@ export default async function Browse({ searchParams }: BrowseProps) {
       <div className={styles["events"]}>
         {events.map((event: any) => (
           <Link href={`event/${event.slug}`} key={event.slug}>
-            <div className={styles["event"]}>
-              <div className={styles["poster"]}>
-                <Image src={event.poster.url} alt={event.name} />
-              </div>
+            <div>
+              <Image src={event.poster.url} alt={event.name} />
               <p className={styles["name"]}>{event.name}</p>
               <p className="is-body-s has-mb-4 has-foreground-accent">
                 {format(event.date, "dd LLL")}

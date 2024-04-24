@@ -26,7 +26,9 @@ export default async function Event({ params }: EventProps) {
       ></div>
 
       <div className={styles["content"]}>
-        <Image src={poster.url} alt={name} />
+        <div className={styles["poster"]}>
+          <Image src={poster.url} alt={name} />
+        </div>
 
         <div>
           <section>
