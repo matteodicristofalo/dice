@@ -62,7 +62,7 @@ export default async function Event({ params }: EventProps) {
                 About the event
               </h2>
 
-              <p className="is-body-l has-foreground-secondary">
+              <p className="is-body-m has-foreground-secondary">
                 {description}
               </p>
             </section>
