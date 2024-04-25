@@ -1,7 +1,5 @@
 .container {
-  margin: auto;
-  max-width: var(--max-width);
-  padding: 2rem;
+  padding: 3rem 2rem;
 }
 
 .search {
@@ -10,10 +8,17 @@
 
 @media screen and (min-width: 1024px) {
   .container {
+    margin: auto;
+    max-width: var(--max-width);
+    min-height: calc(100dvh - 100px);
     padding: 3rem 0;
+    text-align: center;
   }
 
+
   .search {
+    margin: 3rem auto 0 auto;
+    text-align: left;
     width: 75%;
   }
 }

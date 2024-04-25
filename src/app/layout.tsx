@@ -1,4 +1,5 @@
 import { Header } from "@components/header/header";
+import { Footer } from "@components/footer/footer";
 import { DM_Sans } from "next/font/google";
 import "./globals.css";
 import "./typography.css";
@@ -20,6 +21,7 @@ export default function RootLayout({
       <body>
         <Header />
         {children}
+        <Footer />
       </body>
     </html>
   );

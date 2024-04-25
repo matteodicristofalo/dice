@@ -1,7 +1,5 @@
 .container {
-  margin: auto;
-  max-width: var(--max-width);
-  padding: 2rem;
+  padding: 2rem 2rem 4rem 2rem;
 }
 
 .events {
@@ -21,7 +19,10 @@
 
 @media screen and (min-width: 1024px) {
   .container {
-    padding: 3rem 0;
+    margin: auto;
+    max-width: var(--max-width);
+    min-height: calc(100dvh - 100px);
+    padding: 3rem 0 6rem 0;
   }
 
   .events {
