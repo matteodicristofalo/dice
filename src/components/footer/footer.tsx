@@ -1,3 +1,4 @@
+import Link from "next/link";
 import Image from "next/image";
 import styles from "./footer.module.css";
 
@@ -11,24 +12,40 @@ export function Footer() {
           <div>
             <h3 className="is-body-m-medium">Dice</h3>
             <ul>
-              <li>About</li>
-              <li>Careers</li>
+              <li>
+                <Link href="/not-found">About</Link>
+              </li>
+              <li>
+                <Link href="/not-found">Careers</Link>
+              </li>
             </ul>
           </div>
           <div>
             <h3 className="is-body-m-medium">Support</h3>
             <ul>
-              <li>Help Center</li>
-              <li>Get in touch</li>
-              <li>Request a refund</li>
+              <li>
+                <Link href="/not-found">Help Center</Link>
+              </li>
+              <li>
+                <Link href="/not-found">Get in touch</Link>
+              </li>
+              <li>
+                <Link href="/not-found">Request a refund</Link>
+              </li>
             </ul>
           </div>
           <div>
             <h3 className="is-body-m-medium">Work with us</h3>
             <ul>
-              <li>Artists</li>
-              <li>Venues</li>
-              <li>Promoters</li>
+              <li>
+                <Link href="/not-found">Artists</Link>
+              </li>
+              <li>
+                <Link href="/not-found">Venues</Link>
+              </li>
+              <li>
+                <Link href="/not-found">Promoters</Link>
+              </li>
             </ul>
           </div>
         </div>

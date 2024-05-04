@@ -8,11 +8,18 @@ export function Header() {
       <Link href="/">
         <Logo />
       </Link>
+
       <nav>
         <ul>
-          <li className={styles["header__link"]}>Link</li>
-          <li className={styles["header__link"]}>Link</li>
-          <li className={styles["header__link"]}>Link</li>
+          <li className={styles["header__link"]}>
+            <Link href="/not-found">Help Centre</Link>
+          </li>
+          <li className={styles["header__link"]}>
+            <Link href="/not-found">Blog</Link>
+          </li>
+          <li className={styles["header__link"]}>
+            <Link href="/not-found">Log in</Link>
+          </li>
         </ul>
       </nav>
     </header>

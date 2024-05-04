@@ -26,11 +26,13 @@ export default async function Browse({ searchParams }: BrowseProps) {
             <div>
               <Image src={event.poster.url} alt={event.name} />
               <p className={styles["name"]}>{event.name}</p>
-              <p className="is-body-s has-mb-4 has-foreground-accent">
+              <p className="has-mb-4 has-foreground-accent">
                 {format(event.date, "dd LLL")}
               </p>
-              <p className="is-body-s has-mb-4">{event.location.name}</p>
-              <p className="is-body-s has-mb-4">
+              <p className="has-mb-4 has-foreground-secondary">
+                {event.location.name}
+              </p>
+              <p className="has-mb-4">
                 {event.price ? `$ ${event.price}` : "Free"}
               </p>
             </div>
