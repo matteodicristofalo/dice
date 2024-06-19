@@ -15,8 +15,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: Install Dependencies
-        run: npm install --global pnpm
-        run: pnpm install
+        run: npm install --global pnpm && pnpm install
       - name: Run Tests
         run: pnpm test
 
