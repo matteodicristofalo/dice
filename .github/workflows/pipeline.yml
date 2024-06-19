@@ -10,10 +10,20 @@ on:
       - main
 
 jobs:
+  Test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install Dependencies
+        run: npm install --global pnpm
+        run: pnpm install
+      - name: Run Tests
+        run: pnpm test
+
   Deploy:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
       - name: Install Vercel CLI
         run: npm install --global pnpm vercel@latest
       - name: Pull Vercel Environment Information
