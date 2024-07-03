@@ -1,4 +1,4 @@
-import styles from "./page.module.css";
+import styles from "./page.module.scss";
 import { Button } from "@components/button/button";
 import { LocationIcon } from "@icons/location";
 import { CalendarIcon } from "@icons/calendar";
@@ -32,26 +32,22 @@ export default async function Event({ params }: EventProps) {
 
         <div>
           <section>
-            <h1 className={`${styles["name"]} is-title-xxl`}>{name}</h1>
+            <h1 className={styles["name"]}>{name}</h1>
 
-            <p className="flex is-body-l has-gap-8 has-mt-24">
+            <div className={styles["location"]}>
               <LocationIcon />
               <span>{location.name}</span>
-            </p>
+            </div>
 
-            <p className="flex is-body-l has-gap-8 has-mt-8">
+            <div className={styles["date"]}>
               <CalendarIcon />
-              <span className="has-foreground-accent">
-                {format(date, "EEE dd LLL, HH:mm")}
-              </span>
-            </p>
+              <span>{format(date, "EEE dd LLL, HH:mm")}</span>
+            </div>
 
             <div className={styles["price"]}>
               <div>
-                <p>Price:</p>
-                <p className="is-body-l-medium has-mt-8">
-                  {price ? `$ ${price}` : "Free"}
-                </p>
+                <span>Price:</span>
+                <span>{price ? `$ ${price}` : "Free"}</span>
               </div>
 
               <Button>Buy now</Button>
@@ -59,25 +55,20 @@ export default async function Event({ params }: EventProps) {
           </section>
 
           {description && (
-            <section>
-              <h2 className="is-title-l has-mt-64 has-mb-16">
-                About the event
-              </h2>
-
-              <p className="is-body-m has-foreground-secondary">
-                {description}
-              </p>
+            <section className={styles["description"]}>
+              <h2>About the event</h2>
+              <p>{description}</p>
             </section>
           )}
 
           {lineupCollection && lineupCollection.items.length > 0 && (
-            <section>
-              <h2 className="is-title-l has-mt-64 has-mb-16">Line up</h2>
+            <section className={styles["lineup"]}>
+              <h2>Line up</h2>
 
-              {lineupCollection.items.map((artist: any, i: number) => (
-                <div className={styles["artist"]} key={i}>
-                  <div className="flex has-gap-16">
-                    <div className={styles["photo"]}></div>
+              {lineupCollection.items.map((artist: Artist, i: number) => (
+                <div className={styles["lineup__element"]} key={i}>
+                  <div className={styles["artist"]}>
+                    <div className={styles["artist__photo"]}></div>
                     <span>{artist.name}</span>
                   </div>
                   <Button variant="foreground">Follow</Button>

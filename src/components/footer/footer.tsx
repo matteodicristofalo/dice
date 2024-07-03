@@ -1,16 +1,16 @@
 import Link from "next/link";
 import Image from "next/image";
-import styles from "./footer.module.css";
+import styles from "./footer.module.scss";
 
 export function Footer() {
   return (
     <footer className={styles["footer"]}>
       <div className={styles["container"]}>
-        <Image src={"/dice.gif"} alt="dice" width={100} height={122} />
+        <Image src="/dice.gif" alt="dice" width={100} height={122} />
 
         <div className={styles["nav"]}>
           <div>
-            <h3 className="is-body-m-medium">Dice</h3>
+            <h3>Dice</h3>
             <ul>
               <li>
                 <Link href="/not-found">About</Link>
@@ -21,7 +21,7 @@ export function Footer() {
             </ul>
           </div>
           <div>
-            <h3 className="is-body-m-medium">Support</h3>
+            <h3>Support</h3>
             <ul>
               <li>
                 <Link href="/not-found">Help Center</Link>
@@ -35,7 +35,7 @@ export function Footer() {
             </ul>
           </div>
           <div>
-            <h3 className="is-body-m-medium">Work with us</h3>
+            <h3>Work with us</h3>
             <ul>
               <li>
                 <Link href="/not-found">Artists</Link>

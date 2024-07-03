@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import styles from "./search.module.css";
+import styles from "./search.module.scss";
 import { useState } from "react";
 import { SearchIcon } from "@icons/search";
 import { motion, AnimatePresence } from "framer-motion";

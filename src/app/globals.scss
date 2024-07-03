@@ -25,19 +25,6 @@ body {
   color: var(--foreground-color);
 }
 
-.flex {
-  display: flex;
-  align-items: center;
-}
-
-.has-foreground-secondary {
-  color: var(--foreground-secondary-color);
-}
-
-.has-foreground-accent {
-  color: var(--accent-color);
-}
-
 @media screen and (min-width: 1024px) {
   html {
     font-size: 16px;

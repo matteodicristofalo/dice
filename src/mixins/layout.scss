@@ -1,0 +1,5 @@
+@mixin container {
+  margin: auto;
+  max-width: var(--max-width);
+  min-height: calc(100dvh - 100px);
+}

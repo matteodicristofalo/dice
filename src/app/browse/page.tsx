@@ -1,5 +1,5 @@
 import Link from "next/link";
-import styles from "./page.module.css";
+import styles from "./page.module.scss";
 import { getEventsFor } from "@actions";
 import { format } from "date-fns";
 import { Image } from "@components/image/image";
@@ -16,23 +16,21 @@ export default async function Browse({ searchParams }: BrowseProps) {
 
   return (
     <div className={styles["container"]}>
-      <h1 className="is-title-xl">
-        Popular events in <span className="has-foreground-accent">{city}</span>
+      <h1 className={styles["heading"]}>
+        Popular events in <span>{city}</span>
       </h1>
 
       <div className={styles["events"]}>
-        {events.map((event: any) => (
+        {events.map((event) => (
           <Link href={`event/${event.slug}`} key={event.slug}>
-            <div>
+            <div className={styles["event"]}>
               <Image src={event.poster.url} alt={event.name} />
-              <p className={styles["name"]}>{event.name}</p>
-              <p className="has-mb-4 has-foreground-accent">
+              <p className={styles["event__name"]}>{event.name}</p>
+              <p className={styles["event__date"]}>
                 {format(event.date, "dd LLL")}
               </p>
-              <p className="has-mb-4 has-foreground-secondary">
-                {event.location.name}
-              </p>
-              <p className="has-mb-4">
+              <p className={styles["event__location"]}>{event.location.name}</p>
+              <p className={styles["event__price"]}>
                 {event.price ? `$ ${event.price}` : "Free"}
               </p>
             </div>

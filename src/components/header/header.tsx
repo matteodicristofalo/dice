@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import styles from "./header.module.css";
+import styles from "./header.module.scss";
 import { Logo } from "../icons/logo";
 import { useState } from "react";
 

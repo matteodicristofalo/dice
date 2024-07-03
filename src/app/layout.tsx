@@ -1,9 +1,7 @@
 import { Header } from "@components/header/header";
 import { Footer } from "@components/footer/footer";
 import { DM_Sans } from "next/font/google";
-import "./globals.css";
-import "./typography.css";
-import "./spacings.css";
+import "./globals.scss";
 
 const dmSans = DM_Sans({
   subsets: ["latin"],

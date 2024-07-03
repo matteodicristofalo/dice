@@ -1,0 +1,135 @@
+@use "../../../mixins/layout" as l;
+@use "../../../mixins/typography" as t;
+
+.container {
+  position: relative;
+  z-index: 0;
+}
+
+.background {
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  filter: blur(4rem);
+  height: 100dvh;
+  opacity: 0.4;
+  position: absolute;
+  width: 100dvw;
+  z-index: -1;
+}
+
+.content {
+  padding: 2rem 2rem 4rem 2rem;
+  position: relative;
+}
+
+.name {
+  @include t.is-title-xl;
+  margin-top: 2rem;
+}
+
+.location,
+.date {
+  @include t.is-body-l;
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.location {
+  margin-top: 1.5rem;
+}
+
+.date {
+  margin-top: 0.25rem;
+
+  span {
+    color: var(--accent-color);
+  }
+}
+
+.price {
+  align-items: center;
+  background: var(--background-secondary-color);
+  border-radius: var(--radius-size);
+  display: flex;
+  justify-content: space-between;
+  margin: 3rem 0;
+  padding: 1rem;
+
+  span {
+    display: block;
+  }
+
+  span:nth-of-type(2) {
+    @include t.is-body-l-medium;
+    margin-top: 0.25rem;
+  }
+}
+
+.description {
+  h2 {
+    @include t.is-title-m;
+    margin-top: 4rem;
+    margin-bottom: 1rem;
+  }
+
+  p {
+    @include t.is-body-m;
+    color: var(--foreground-secondary-color);
+  }
+}
+
+.lineup {
+  h2 {
+    @include t.is-title-m;
+    margin-top: 4rem;
+    margin-bottom: 1rem;
+  }
+
+  &__element {
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+    margin-top: 1.5rem;
+
+    .artist {
+      align-items: center;
+      display: flex;
+      gap: 1rem;
+
+      .artist__photo {
+        background: var(--background-secondary-color);
+        border-radius: 50%;
+        height: 3rem;
+        width: 3rem;
+      }
+    }
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .background {
+    height: 50dvh;
+  }
+
+  .content {
+    display: grid;
+    gap: 3rem;
+    grid-template-columns: 1fr 2fr;
+    margin: auto;
+    max-width: var(--max-width);
+    min-height: calc(100dvh - 100px);
+    padding: 3rem 0 6rem 0;
+  }
+
+  .poster {
+    height: fit-content;
+    position: sticky;
+    top: 5rem;
+  }
+
+  .name {
+    margin-top: 0;
+  }
+}
