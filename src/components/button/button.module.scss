@@ -7,11 +7,11 @@
   color: var(--background-color);
   text-transform: uppercase;
 
-  &--accent {
-    background: var(--accent-color);
+  &--primary {
+    background: var(--primary-color);
   }
 
-  &--foreground {
+  &--secondary {
     background: var(--foreground-color);
   }
 }

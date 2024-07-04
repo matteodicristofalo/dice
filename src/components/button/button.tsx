@@ -1,16 +1,12 @@
 import styles from "./button.module.scss";
 
 interface ButtonProps {
-  variant?: "accent" | "foreground";
+  variant?: "primary" | "secondary";
   children: React.ReactNode;
 }
 
-export function Button({ variant = "accent", children }: ButtonProps) {
-  const className = `${styles["button"]} ${
-    variant === "accent"
-      ? styles["button--accent"]
-      : styles["button--foreground"]
-  }`;
+export function Button({ variant = "primary", children }: ButtonProps) {
+  const className = `${styles["button"]} ${styles[`button--${variant}`]}`;
 
   return (
     <button type="button" className={className}>

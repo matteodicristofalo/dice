@@ -50,7 +50,7 @@ export default async function Event({ params }: EventProps) {
                 <span>{price ? `$ ${price}` : "Free"}</span>
               </div>
 
-              <Button>Buy now</Button>
+              <Button variant="primary">Buy now</Button>
             </div>
           </section>
 
@@ -71,7 +71,7 @@ export default async function Event({ params }: EventProps) {
                     <div className={styles["artist__photo"]}></div>
                     <span>{artist.name}</span>
                   </div>
-                  <Button variant="foreground">Follow</Button>
+                  <Button variant="secondary">Follow</Button>
                 </div>
               ))}
             </section>

@@ -10,7 +10,7 @@ export default function NotFound() {
         We are sorry! this page has not been implemented yet...
       </p>
       <Link href="/">
-        <Button>Return Home</Button>
+        <Button variant="primary">Return Home</Button>
       </Link>
     </div>
   );

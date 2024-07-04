@@ -9,7 +9,7 @@
   @include t.is-title-xl;
 
   span {
-    color: var(--accent-color);
+    color: var(--primary-color);
   }
 }
 
@@ -36,7 +36,7 @@
   }
 
   &__date {
-    color: var(--accent-color);
+    color: var(--primary-color);
   }
 
   &__location {
