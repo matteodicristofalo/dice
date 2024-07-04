@@ -95,8 +95,8 @@ async function fetchContentful(graphQlQuery: string) {
       Authorization: `Bearer ${accessToken}`,
     },
     body: JSON.stringify(query),
-    // next: {
-    //   revalidate: 60,
-    // },
+    next: {
+      revalidate: 60,
+    },
   });
 }
