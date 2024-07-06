@@ -71,7 +71,9 @@ export default async function Event({ params }: EventProps) {
                     <div className={styles["artist__photo"]}></div>
                     <span>{artist.name}</span>
                   </div>
-                  <Button variant="secondary">Follow</Button>
+                  <Button variant="secondary" size="small">
+                    Follow
+                  </Button>
                 </div>
               ))}
             </section>

@@ -24,7 +24,7 @@
 }
 
 .name {
-  @include t.is-title-xl;
+  @include t.is-title-l;
   margin-top: 2rem;
 }
 
@@ -130,6 +130,7 @@
   }
 
   .name {
+    @include t.is-title-xl;
     margin-top: 0;
   }
 }
