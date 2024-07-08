@@ -5,6 +5,9 @@ import { CalendarIcon } from "@icons/calendar";
 import { getEvent } from "@actions";
 import { format } from "date-fns";
 import { Image } from "@components/image/image";
+import { Drawer } from "@components/drawer/drawer";
+import { DrawerContextProvider } from "@components/drawer/drawer-context";
+import { PayButton } from "./pay-button";
 
 interface EventProps {
   params: {
@@ -17,69 +20,75 @@ export default async function Event({ params }: EventProps) {
     await getEvent(params.slug);
 
   return (
-    <div className={styles["container"]}>
-      <div
-        className={styles["background"]}
-        style={{
-          backgroundImage: `url("${poster.url}")`,
-        }}
-      ></div>
+    <DrawerContextProvider>
+      <div className={styles["container"]}>
+        <div
+          className={styles["background"]}
+          style={{
+            backgroundImage: `url("${poster.url}")`,
+          }}
+        ></div>
 
-      <div className={styles["content"]}>
-        <div className={styles["poster"]}>
-          <Image src={poster.url} alt={name} />
-        </div>
+        <div className={styles["content"]}>
+          <div className={styles["poster"]}>
+            <Image src={poster.url} alt={name} />
+          </div>
 
-        <div>
-          <section>
-            <h1 className={styles["name"]}>{name}</h1>
+          <div>
+            <section>
+              <h1 className={styles["name"]}>{name}</h1>
 
-            <div className={styles["location"]}>
-              <LocationIcon />
-              <span>{location.name}</span>
-            </div>
-
-            <div className={styles["date"]}>
-              <CalendarIcon />
-              <span>{format(date, "EEE dd LLL, HH:mm")}</span>
-            </div>
-
-            <div className={styles["price"]}>
-              <div>
-                <span>Price:</span>
-                <span>{price ? `$ ${price}` : "Free"}</span>
+              <div className={styles["location"]}>
+                <LocationIcon />
+                <span>{location.name}</span>
               </div>
 
-              <Button variant="primary">Buy now</Button>
-            </div>
-          </section>
+              <div className={styles["date"]}>
+                <CalendarIcon />
+                <span>{format(date, "EEE dd LLL, HH:mm")}</span>
+              </div>
 
-          {description && (
-            <section className={styles["description"]}>
-              <h2>About the event</h2>
-              <p>{description}</p>
-            </section>
-          )}
-
-          {lineupCollection && lineupCollection.items.length > 0 && (
-            <section className={styles["lineup"]}>
-              <h2>Line up</h2>
-
-              {lineupCollection.items.map((artist: Artist, i: number) => (
-                <div className={styles["lineup__element"]} key={i}>
-                  <div className={styles["artist"]}>
-                    <div className={styles["artist__photo"]}></div>
-                    <span>{artist.name}</span>
-                  </div>
-                  <Button variant="secondary" size="small">
-                    Follow
-                  </Button>
+              <div className={styles["price"]}>
+                <div>
+                  <span>Price:</span>
+                  <span>{price ? `$ ${price}` : "Free"}</span>
                 </div>
-              ))}
+
+                <PayButton>Buy now</PayButton>
+              </div>
             </section>
-          )}
+
+            {description && (
+              <section className={styles["description"]}>
+                <h2>About the event</h2>
+                <p>{description}</p>
+              </section>
+            )}
+
+            {lineupCollection && lineupCollection.items.length > 0 && (
+              <section className={styles["lineup"]}>
+                <h2>Line up</h2>
+
+                {lineupCollection.items.map((artist: Artist, i: number) => (
+                  <div className={styles["lineup__element"]} key={i}>
+                    <div className={styles["artist"]}>
+                      <div className={styles["artist__photo"]}></div>
+                      <span>{artist.name}</span>
+                    </div>
+                    <Button variant="secondary" size="small">
+                      Follow
+                    </Button>
+                  </div>
+                ))}
+              </section>
+            )}
+          </div>
         </div>
       </div>
-    </div>
+
+      <Drawer>
+        <h2>Drawer content</h2>
+      </Drawer>
+    </DrawerContextProvider>
   );
 }
