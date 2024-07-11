@@ -23,19 +23,17 @@
     cursor: pointer;
     display: flex;
     justify-content: center;
-    left: 50%;
+    margin: 0 auto 2rem auto;
     padding: 1rem;
-    position: absolute;
-    top: 10%;
-    transform: translateX(-50%);
+    width: min-content;
   }
 
   &__content {
     background: var(--background-secondary-color);
     color: var(--foreground-color);
+    max-height: 80%;
     overflow-y: scroll;
     padding: 2rem;
-    height: 80%;
   }
 }
 
@@ -44,14 +42,20 @@
     flex-direction: row;
 
     &__close-button {
+      left: 50%;
       left: revert;
+      margin: 0;
+      position: absolute;
       right: 1rem;
+      top: 10%;
       top: 1rem;
       transform: revert;
+      transform: translateX(-50%);
     }
 
     &__content {
       height: 100%;
+      max-height: revert;
       max-width: 80%;
       min-width: 400px;
       padding: 8rem 2rem 2rem 2rem;
