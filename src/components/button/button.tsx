@@ -2,14 +2,14 @@ import styles from "./button.module.scss";
 
 interface ButtonProps {
   variant?: "primary" | "secondary";
-  size?: "medium" | "small";
+  size?: "default" | "small" | "fluid";
   onClick?: () => void;
   children: React.ReactNode;
 }
 
 export function Button({
   variant = "primary",
-  size = "medium",
+  size = "default",
   onClick,
   children,
 }: ButtonProps) {

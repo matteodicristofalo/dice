@@ -11,6 +11,10 @@
     font-size: 0.75rem;
   }
 
+  &--fluid {
+    width: 100%;
+  }
+
   &--primary {
     background: var(--primary-color);
   }
