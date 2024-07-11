@@ -1,8 +1,11 @@
 "use client";
 
+import { Button } from "@components/button/button";
 import { Event } from "@types";
-import { Image } from "@components/image/image";
 import { format } from "date-fns";
+import { Image } from "@components/image/image";
+import { TicketsSelector } from "./tickets-selector";
+import { useState } from "react";
 import styles from "./checkout.module.scss";
 
 interface CheckoutProps {
@@ -10,6 +13,17 @@ interface CheckoutProps {
 }
 
 export function Checkout({ event }: CheckoutProps) {
+  const [quantity, setQuantity] = useState(1);
+  const [amount, setAmount] = useState(event.price);
+
+  const onQuantityChange = (quantity: number) => {
+    setQuantity(quantity);
+
+    if (event.price) {
+      setAmount(quantity * event.price);
+    }
+  };
+
   return (
     <div className={styles["checkout"]}>
       <div className={styles["event"]}>
@@ -26,6 +40,12 @@ export function Checkout({ event }: CheckoutProps) {
           </span>
         </div>
       </div>
+
+      <TicketsSelector quantity={quantity} onChange={onQuantityChange} />
+
+      <Button variant="primary" size="fluid">
+        {event.price ? `Pay $ ${amount}` : "Get tickets"}
+      </Button>
     </div>
   );
 }

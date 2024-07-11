@@ -1,0 +1,22 @@
+@use "../../mixins/typography.scss" as t;
+
+.selector {
+  align-items: center;
+  background: var(--foreground-color);
+  border-radius: var(--radius-size);
+  color: var(--background-color);
+  display: flex;
+  justify-content: space-evenly;
+  padding: 2rem;
+
+  span {
+    @include t.is-title-m;
+  }
+
+  button {
+    @include t.is-title-m;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+  }
+}
