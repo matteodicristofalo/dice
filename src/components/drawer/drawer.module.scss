@@ -20,6 +20,7 @@
     border-radius: 100%;
     border: none;
     color: var(--background-color);
+    cursor: pointer;
     display: flex;
     justify-content: center;
     left: 50%;
@@ -51,8 +52,9 @@
 
     &__content {
       height: 100%;
+      max-width: 80%;
       min-width: 400px;
-      padding: 6rem 2rem;
+      padding: 8rem 2rem 2rem 2rem;
     }
   }
 }

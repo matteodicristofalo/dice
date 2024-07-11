@@ -9,8 +9,8 @@ export function CloseIcon() {
     >
       <path
         stroke="currentColor"
-        stroke-linecap="square"
-        stroke-width="1.25"
+        strokeLinecap="square"
+        strokeWidth="1.25"
         d="m16.5 7.5-9 9m0-9 9 9"
       ></path>
     </svg>
