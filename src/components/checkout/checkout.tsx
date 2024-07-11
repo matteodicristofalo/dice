@@ -17,6 +17,8 @@ export function Checkout({ event }: CheckoutProps) {
   const [amount, setAmount] = useState(event.price);
 
   const onQuantityChange = (quantity: number) => {
+    if (quantity < 1 || quantity > MAX_PURCHASABLE_TICKETS) return;
+
     setQuantity(quantity);
 
     if (event.price) {
@@ -49,3 +51,5 @@ export function Checkout({ event }: CheckoutProps) {
     </div>
   );
 }
+
+export const MAX_PURCHASABLE_TICKETS = 6;
