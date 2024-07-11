@@ -1,7 +1,4 @@
-/* 
-  TODO:
-    - Use zod to validate data
-*/
+import { Event, Location } from "@types";
 
 export async function getAvailableCities(): Promise<string[]> {
   const query = `

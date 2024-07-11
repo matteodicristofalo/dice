@@ -8,6 +8,7 @@ import { Image } from "@components/image/image";
 import { Drawer } from "@components/drawer/drawer";
 import { DrawerContextProvider } from "@components/drawer/drawer-context";
 import { PayButton } from "./pay-button";
+import { Checkout } from "@components/checkout/checkout";
 
 interface EventProps {
   params: {
@@ -16,8 +17,7 @@ interface EventProps {
 }
 
 export default async function Event({ params }: EventProps) {
-  const { poster, name, location, date, price, description, lineupCollection } =
-    await getEvent(params.slug);
+  const event = await getEvent(params.slug);
 
   return (
     <DrawerContextProvider>
@@ -25,69 +25,70 @@ export default async function Event({ params }: EventProps) {
         <div
           className={styles["background"]}
           style={{
-            backgroundImage: `url("${poster.url}")`,
+            backgroundImage: `url("${event.poster.url}")`,
           }}
         ></div>
 
         <div className={styles["content"]}>
           <div className={styles["poster"]}>
-            <Image src={poster.url} alt={name} />
+            <Image src={event.poster.url} alt={event.name} />
           </div>
 
           <div>
             <section>
-              <h1 className={styles["name"]}>{name}</h1>
+              <h1 className={styles["name"]}>{event.name}</h1>
 
               <div className={styles["location"]}>
                 <LocationIcon />
-                <span>{location.name}</span>
+                <span>{event.location.name}</span>
               </div>
 
               <div className={styles["date"]}>
                 <CalendarIcon />
-                <span>{format(date, "EEE dd LLL, HH:mm")}</span>
+                <span>{format(event.date, "EEE dd LLL, HH:mm")}</span>
               </div>
 
               <div className={styles["price"]}>
                 <div>
                   <span>Price:</span>
-                  <span>{price ? `$ ${price}` : "Free"}</span>
+                  <span>{event.price ? `$ ${event.price}` : "Free"}</span>
                 </div>
 
                 <PayButton>Buy now</PayButton>
               </div>
             </section>
 
-            {description && (
+            {event.description && (
               <section className={styles["description"]}>
                 <h2>About the event</h2>
-                <p>{description}</p>
+                <p>{event.description}</p>
               </section>
             )}
 
-            {lineupCollection && lineupCollection.items.length > 0 && (
-              <section className={styles["lineup"]}>
-                <h2>Line up</h2>
+            {event.lineupCollection &&
+              event.lineupCollection.items.length > 0 && (
+                <section className={styles["lineup"]}>
+                  <h2>Line up</h2>
 
-                {lineupCollection.items.map((artist: Artist, i: number) => (
-                  <div className={styles["lineup__element"]} key={i}>
-                    <div className={styles["artist"]}>
-                      <div className={styles["artist__photo"]}></div>
-                      <span>{artist.name}</span>
+                  {event.lineupCollection.items.map((artist, i: number) => (
+                    <div className={styles["lineup__element"]} key={i}>
+                      <div className={styles["artist"]}>
+                        <div className={styles["artist__photo"]}></div>
+                        <span>{artist.name}</span>
+                      </div>
+                      <Button variant="secondary" size="small">
+                        Follow
+                      </Button>
                     </div>
-                    <Button variant="secondary" size="small">
-                      Follow
-                    </Button>
-                  </div>
-                ))}
-              </section>
-            )}
+                  ))}
+                </section>
+              )}
           </div>
         </div>
       </div>
 
       <Drawer>
-        <h2>Drawer content</h2>
+        <Checkout event={event} />
       </Drawer>
     </DrawerContextProvider>
   );

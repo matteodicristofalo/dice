@@ -1,4 +1,4 @@
-interface Event {
+export interface Event {
   slug: string;
   name: string;
   poster: Asset;
@@ -11,7 +11,7 @@ interface Event {
   };
 }
 
-interface Location {
+export interface Location {
   name: string;
   city: string;
 }
