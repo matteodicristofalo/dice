@@ -10,7 +10,7 @@
   opacity: 0;
   position: fixed;
   top: 0;
-  transition: opacity 0.25s ease-out 0.25s, visibility 0s ease-out 0.75s;
+  transition: all 0.25s ease-out;
   visibility: hidden;
   width: 100dvw;
   z-index: 1;
@@ -40,12 +40,11 @@
     overflow-y: scroll;
     padding: 2rem;
     transform: translateY(100%);
-    transition: transform 0.25s ease-out 0.15s;
+    transition: transform 0.25s ease-out;
   }
 
   &-opened {
     opacity: 1;
-    transition: opacity 0.25s ease-out;
     visibility: visible;
 
     .drawer__close-button {
@@ -54,7 +53,6 @@
 
     .drawer__content {
       transform: translateY(0);
-      transition: transform 0.25s ease-out;
     }
   }
 }
