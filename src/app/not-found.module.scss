@@ -1,5 +1,5 @@
-@use "../mixins/layout" as l;
 @use "../mixins/typography" as t;
+@use "../mixins/display" as d;
 
 .container {
   align-items: center;
@@ -11,10 +11,16 @@
 }
 
 .heading {
-  @include t.is-title-xxl;
+  @include t.is-title-xl;
 }
 
 .paragraph {
   margin-top: 1rem;
   margin-bottom: 2rem;
+}
+
+@include d.desktop {
+  .heading {
+    @include t.is-title-xxl;
+  }
 }

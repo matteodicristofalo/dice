@@ -1,5 +1,6 @@
 @use "../../mixins/layout" as l;
 @use "../../mixins/typography" as t;
+@use "../../mixins/display" as d;
 
 .container {
   padding: 2rem 2rem 4rem 2rem;
@@ -44,7 +45,7 @@
   }
 }
 
-@media screen and (min-width: 1024px) {
+@include d.desktop {
   .container {
     @include l.container;
     padding: 3rem 0 6rem 0;

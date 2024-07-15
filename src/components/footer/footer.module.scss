@@ -1,4 +1,5 @@
 @use "../../mixins/typography" as t;
+@use "../../mixins/display" as d;
 
 .footer {
   background: white;
@@ -24,7 +25,7 @@
   }
 }
 
-@media screen and (min-width: 1024px) {
+@include d.desktop {
   .footer {
     padding: 5rem 0;
   }

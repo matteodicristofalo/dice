@@ -1,3 +1,5 @@
+@use "../mixins/display" as d;
+
 * {
   box-sizing: border-box;
   color: inherit;
@@ -26,7 +28,7 @@ body {
   color: var(--foreground-color);
 }
 
-@media screen and (min-width: 1024px) {
+@include d.desktop {
   html {
     font-size: 16px;
   }

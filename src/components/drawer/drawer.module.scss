@@ -1,3 +1,5 @@
+@use "../../mixins/display" as d;
+
 .drawer {
   background: rgba(0, 0, 0, 0.5);
   display: flex;
@@ -57,7 +59,7 @@
   }
 }
 
-@media screen and (min-width: 1024px) {
+@include d.desktop {
   .drawer {
     flex-direction: row;
 

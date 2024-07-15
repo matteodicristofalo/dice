@@ -1,5 +1,6 @@
 @use "../mixins/layout" as l;
 @use "../mixins/typography" as t;
+@use "../mixins/display" as d;
 
 .container {
   padding: 3rem 2rem;
@@ -19,7 +20,7 @@
   margin-top: 3rem;
 }
 
-@media screen and (min-width: 1024px) {
+@include d.desktop {
   .container {
     @include l.container;
     text-align: center;

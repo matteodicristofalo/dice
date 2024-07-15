@@ -1,5 +1,5 @@
-@use "../../../mixins/layout" as l;
 @use "../../../mixins/typography" as t;
+@use "../../../mixins/display" as d;
 
 .container {
   position: relative;
@@ -108,7 +108,7 @@
   }
 }
 
-@media screen and (min-width: 1024px) {
+@include d.desktop {
   .background {
     height: 50dvh;
   }
