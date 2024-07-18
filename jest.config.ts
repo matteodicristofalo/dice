@@ -16,7 +16,7 @@ const config: Config = {
   moduleNameMapper: {
     "^@components/(.*)$": "<rootDir>/src/components/$1",
     "^@icons/(.*)$": ["<rootDir>/src/components/icons/$1"],
-    "^@actions$": ["./src/app/actions"],
+    "^@actions/(.*)$": ["./src/app/actions/$1"],
   },
   setupFilesAfterEnv: ["<rootDir>/jest.setup.ts"],
   testEnvironment: "jsdom",

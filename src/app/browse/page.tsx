@@ -1,6 +1,6 @@
 import Link from "next/link";
 import styles from "./page.module.scss";
-import { getEventsFor } from "@actions";
+import { getEventsFor } from "@actions/contentful";
 import { format } from "date-fns";
 import { Image } from "@components/image/image";
 

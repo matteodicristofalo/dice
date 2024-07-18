@@ -1,4 +1,4 @@
-import { getAvailableCities } from "./actions";
+import { getAvailableCities } from "@actions/contentful";
 import { Search } from "@components/search/search";
 import styles from "./page.module.scss";
 

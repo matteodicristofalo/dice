@@ -12,11 +12,14 @@
     "prepare": "husky"
   },
   "dependencies": {
+    "@stripe/react-stripe-js": "^2.7.3",
+    "@stripe/stripe-js": "^4.1.0",
     "date-fns": "^3.6.0",
     "framer-motion": "^11.1.7",
     "next": "14.2.2",
     "react": "^18",
-    "react-dom": "^18"
+    "react-dom": "^18",
+    "stripe": "^16.2.0"
   },
   "devDependencies": {
     "@testing-library/jest-dom": "^6.4.2",

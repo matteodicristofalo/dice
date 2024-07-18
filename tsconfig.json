@@ -20,7 +20,7 @@
     "paths": {
       "@components/*": ["./src/components/*"],
       "@icons/*": ["./src/components/icons/*"],
-      "@actions": ["./src/app/actions"],
+      "@actions/*": ["./src/app/actions/*"],
       "@types": ["./src/app/types"]
     }
   },

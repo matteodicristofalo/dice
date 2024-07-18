@@ -2,7 +2,7 @@ import styles from "./page.module.scss";
 import { Button } from "@components/button/button";
 import { LocationIcon } from "@icons/location";
 import { CalendarIcon } from "@icons/calendar";
-import { getEvent } from "@actions";
+import { getEvent } from "@actions/contentful";
 import { format } from "date-fns";
 import { Image } from "@components/image/image";
 import { Drawer } from "@components/drawer/drawer";
