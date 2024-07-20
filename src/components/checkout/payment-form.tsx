@@ -1,6 +1,12 @@
 "use client";
 
-import { Elements, PaymentElement } from "@stripe/react-stripe-js";
+import { Button } from "@components/button/button";
+import {
+  Elements,
+  PaymentElement,
+  useElements,
+  useStripe,
+} from "@stripe/react-stripe-js";
 import { loadStripe } from "@stripe/stripe-js";
 
 const stripePromise = loadStripe(
@@ -18,7 +24,32 @@ export function PaymentForm({ clientSecret }: { clientSecret: string }) {
       }}
       stripe={stripePromise}
     >
-      <PaymentElement />
+      <Form />
     </Elements>
+  );
+}
+
+function Form() {
+  const stripe = useStripe();
+  const elements = useElements();
+
+  const onClick = async () => {
+    if (!stripe || !elements) return;
+
+    await stripe.confirmPayment({
+      elements,
+      confirmParams: {
+        return_url: "http://localhost:3000",
+      },
+    });
+  };
+
+  return (
+    <div style={{ display: "flex", flexDirection: "column", gap: "1rem" }}>
+      <PaymentElement />
+      <Button variant="primary" size="fluid" onClick={onClick}>
+        Pay
+      </Button>
+    </div>
   );
 }
