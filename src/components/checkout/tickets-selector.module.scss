@@ -1,5 +1,36 @@
 @use "../../mixins/typography.scss" as t;
 
+.tickets-selector {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.event {
+  display: flex;
+
+  &__poster {
+    height: 75px;
+    width: 75px;
+  }
+
+  &__name,
+  &__date,
+  &__location {
+    display: block;
+    margin-top: 0.25rem;
+    padding-left: 1rem;
+  }
+
+  &__date {
+    color: var(--primary-color);
+  }
+
+  &__location {
+    color: var(--foreground-secondary-color);
+  }
+}
+
 .selector {
   align-items: center;
   background: var(--foreground-color);
