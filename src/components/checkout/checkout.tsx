@@ -3,6 +3,7 @@
 import { createPaymentIntent } from "@actions/stripe";
 import { Event } from "@types";
 import { useState } from "react";
+import { ElementsProvider } from "./elements-provider";
 import { PaymentForm } from "./payment-form";
 import { TicketsSelector } from "./tickets-selector";
 
@@ -23,6 +24,10 @@ export function Checkout({ event }: CheckoutProps) {
   if (!clientSecret) {
     return <TicketsSelector event={event} onPayRequest={onPayRequest} />;
   } else {
-    return <PaymentForm clientSecret={clientSecret} />;
+    return (
+      <ElementsProvider clientSecret={clientSecret}>
+        <PaymentForm />
+      </ElementsProvider>
+    );
   }
 }

@@ -2,34 +2,13 @@
 
 import { Button } from "@components/button/button";
 import {
-  Elements,
   PaymentElement,
   useElements,
   useStripe,
 } from "@stripe/react-stripe-js";
-import { loadStripe } from "@stripe/stripe-js";
+import styles from "./payment-form.module.scss";
 
-const stripePromise = loadStripe(
-  process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY!
-);
-
-export function PaymentForm({ clientSecret }: { clientSecret: string }) {
-  return (
-    <Elements
-      options={{
-        clientSecret,
-        appearance: {
-          labels: "floating",
-        },
-      }}
-      stripe={stripePromise}
-    >
-      <Form />
-    </Elements>
-  );
-}
-
-function Form() {
+export function PaymentForm() {
   const stripe = useStripe();
   const elements = useElements();
 
@@ -45,8 +24,9 @@ function Form() {
   };
 
   return (
-    <div style={{ display: "flex", flexDirection: "column", gap: "1rem" }}>
+    <div className={styles["payment-form"]}>
       <PaymentElement />
+
       <Button variant="primary" size="fluid" onClick={onClick}>
         Pay
       </Button>
