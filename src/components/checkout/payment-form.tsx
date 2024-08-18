@@ -18,7 +18,7 @@ export function PaymentForm() {
     await stripe.confirmPayment({
       elements,
       confirmParams: {
-        return_url: "http://localhost:3000",
+        return_url: "https://dice-orcin.vercel.app",
       },
     });
   };
